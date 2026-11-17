@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>속초 1박 2일 우정여행 일정표 (11.21 - 11.22)</title>
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Leaflet CSS for Route Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top Hero Banner -->
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <div class="hero-badges">
+        <span class="badge badge-primary"><i data-lucide="car"></i> 자차 이동 (녹번 07:00 출발)</span>
+        <span class="badge badge-glass"><i data-lucide="calendar"></i> 11.21(토) - 11.22(일) · 1박 2일</span>
+      </div>
+      <h1 class="hero-title">속초 · 양양 1박 2일<br /><span>우정여행 가이드북</span></h1>
+      <p class="hero-subtitle">낙산사부터 아바이마을, 연탄구이 & 포차 투어, 설악산 흔들바위까지</p>
+
+      <!-- Quick Summary Cards -->
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-icon"><i data-lucide="navigation"></i></div>
+          <div>
+            <span class="summary-label">출발지 / 일시</span>
+            <strong class="summary-value">11/21(토) 07:00 녹번역 인근</strong>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-icon"><i data-lucide="building-2"></i></div>
+          <div>
+            <span class="summary-label">베이스캠프 (숙소)</span>
+            <strong class="summary-value">호텔 더블루테라 (속초)</strong>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-icon"><i data-lucide="utensils"></i></div>
+          <div>
+            <span class="summary-label">핵심 맛집 픽</span>
+            <strong class="summary-value">단천 · 연탄불 · 금주언니 · 남경</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Navigation Tabs -->
+  <nav class="sticky-nav">
+    <div class="container nav-inner">
+      <button class="nav-tab active" data-target="section-schedule">
+        <i data-lucide="calendar-clock"></i> 일정표
+      </button>
+      <button class="nav-tab" data-target="section-food">
+        <i data-lucide="utensils-crossed"></i> 맛집 · 장소
+      </button>
+      <button class="nav-tab" data-target="section-map">
+        <i data-lucide="map-pin"></i> 루트 지도
+      </button>
+      <button class="nav-tab" data-target="section-tools">
+        <i data-lucide="calculator"></i> 정산 · 체크
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container main-content">
+    
+    <!-- 1. SCHEDULE SECTION -->
+    <section id="section-schedule" class="tab-section active">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">여행 타임라인</h2>
+          <p class="section-desc">장소 카드를 누르면 상세 팁과 네이버 지도를 바로 열 수 있어요.</p>
+        </div>
+        <div class="day-filter">
+          <button class="day-btn active" data-day="all">전체 보기</button>
+          <button class="day-btn" data-day="1">DAY 1 <span>11/21(토)</span></button>
+          <button class="day-btn" data-day="2">DAY 2 <span>11/22(일)</span></button>
+        </div>
+      </div>
+
+      <!-- Route Flow Overview Pill Bar -->
+      <div class="route-overview-box">
+        <div class="route-overview-row" data-day-group="1">
+          <span class="route-day-tag day1">DAY 1</span>
+          <div class="route-steps">
+            <span>녹번(07:00)</span>
+            <i data-lucide="chevron-right"></i>
+            <span>휴게소 식사</span>
+            <i data-lucide="chevron-right"></i>
+            <span>낙산사</span>
+            <i data-lucide="chevron-right"></i>
+            <span class="highlight">단천식당(점심)</span>
+            <i data-lucide="chevron-right"></i>
+            <span>중앙시장·카페</span>
+            <i data-lucide="chevron-right"></i>
+            <span class="highlight">연탄불생구이(1차)</span>
+            <i data-lucide="chevron-right"></i>
+            <span class="highlight">금주언니포차(2차)</span>
+            <i data-lucide="chevron-right"></i>
+            <span>호텔더블루테라(3차)</span>
+          </div>
+        </div>
+        <div class="route-overview-row" data-day-group="2">
+          <span class="route-day-tag day2">DAY 2</span>
+          <div class="route-steps">
+            <span>숙소 체크아웃</span>
+            <i data-lucide="chevron-right"></i>
+            <span>설악산 흔들바위 등반</span>
+            <i data-lucide="chevron-right"></i>
+            <span class="highlight">남경막국수 본점(점심)</span>
+            <i data-lucide="chevron-right"></i>
+            <span>서울(녹번) 복귀</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Container Rendered by JS -->
+      <div id="timeline-container" class="timeline-wrapper"></div>
+    </section>
+
+    <!-- 2. FOOD & SPOTS SECTION -->
+    <section id="section-food" class="tab-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">맛집 & 필수 코스 리스트</h2>
+          <p class="section-desc">네비게이션 입력용 주소 원클릭 복사 & 네이버 지도 바로가기</p>
+        </div>
+        <div class="category-filter">
+          <button class="cat-btn active" data-cat="all">전체</button>
+          <button class="cat-btn" data-cat="meal">식사 맛집</button>
+          <button class="cat-btn" data-cat="drink">술집 · 포차</button>
+          <button class="cat-btn" data-cat="spot">관광 · 시장 · 숙소</button>
+        </div>
+      </div>
+
+      <div id="places-grid" class="places-grid"></div>
+    </section>
+
+    <!-- 3. ROUTE MAP SECTION -->
+    <section id="section-map" class="tab-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">한눈에 보는 이동 동선</h2>
+          <p class="section-desc">남쪽(양양 낙산사)에서 북상하며 속초 시내를 돌고, 이튿날 설악산에서 대포항으로 내려오는 최적 코스입니다.</p>
+        </div>
+        <div class="map-filter">
+          <button class="map-btn active" data-map-day="all">전체 루트</button>
+          <button class="map-btn" data-map-day="1">DAY 1 동선</button>
+          <button class="map-btn" data-map-day="2">DAY 2 동선</button>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <div id="trip-map" class="trip-map"></div>
+        <div class="map-legend">
+          <span class="legend-item"><span class="dot day1-dot"></span> DAY 1 (11/21 토) 동선</span>
+          <span class="legend-item"><span class="dot day2-dot"></span> DAY 2 (11/22 일) 동선</span>
+        </div>
+      </div>
+
+      <!-- Driving Time Summary Cards -->
+      <div class="driving-summary">
+        <h3 class="sub-heading"><i data-lucide="car-front"></i> 자차 구간별 예상 소요 시간</h3>
+        <div class="driving-grid">
+          <div class="drive-item">
+            <span class="drive-day">D1</span>
+            <div class="drive-route">녹번 ➔ 낙산사 (휴게소 경유)</div>
+            <div class="drive-time">약 2시간 30분 ~ 3시간</div>
+          </div>
+          <div class="drive-item">
+            <span class="drive-day">D1</span>
+            <div class="drive-route">낙산사 ➔ 아바이마을 (단천식당)</div>
+            <div class="drive-time">약 20분 (14km)</div>
+          </div>
+          <div class="drive-item">
+            <span class="drive-day">D1</span>
+            <div class="drive-route">아바이마을 ➔ 속초중앙시장</div>
+            <div class="drive-time">차량 5분 / 갯배+도보 10분</div>
+          </div>
+          <div class="drive-item">
+            <span class="drive-day">D1</span>
+            <div class="drive-route">중앙시장·연탄불 ➔ 호텔 더블루테라</div>
+            <div class="drive-time">차량 8~10분 (조양동)</div>
+          </div>
+          <div class="drive-item">
+            <span class="drive-day day2">D2</span>
+            <div class="drive-route">호텔 더블루테라 ➔ 설악산 소공원</div>
+            <div class="drive-time">약 20분 (12km)</div>
+          </div>
+          <div class="drive-item">
+            <span class="drive-day day2">D2</span>
+            <div class="drive-route">설악산 ➔ 남경막국수 본점 (대포항)</div>
+            <div class="drive-time">약 20분 (13km)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TOOLS SECTION (EXPENSE CALCULATOR & CHECKLIST) -->
+    <section id="section-tools" class="tab-section">
+      <div class="tools-grid">
+        <!-- Expense N-bbang Calculator -->
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <h3><i data-lucide="wallet"></i> 1/N 정산 계산기</h3>
+            <div class="member-count-control">
+              <label for="member-count">인원수</label>
+              <button type="button" id="member-minus" class="count-btn">-</button>
+              <span id="member-count-display">4</span>명
+              <button type="button" id="member-plus" class="count-btn">+</button>
+            </div>
+          </div>
+          <p class="tool-desc">지출 내역을 입력하면 1인당 정산 금액이 자동 계산됩니다. (브라우저에 자동 저장)</p>
+
+          <form id="expense-form" class="expense-form">
+            <input type="text" id="expense-title" placeholder="항목 (예: 주유+톨비, 연탄불생구이)" required />
+            <input type="number" id="expense-amount" placeholder="금액 (원)" required min="0" step="100" />
+            <button type="submit" class="btn-add"><i data-lucide="plus"></i> 추가</button>
+          </form>
+
+          <ul id="expense-list" class="expense-list"></ul>
+
+          <div class="expense-summary">
+            <div class="expense-row">
+              <span>총 지출 합계</span>
+              <strong id="total-expense">0원</strong>
+            </div>
+            <div class="expense-row highlight-row">
+              <span>1인당 정산 금액</span>
+              <strong id="per-person-expense">0원</strong>
+            </div>
+            <button type="button" id="copy-settlement-btn" class="btn-share-kakao">
+              <i data-lucide="copy"></i> 단톡방 공유용 정산 내역 복사
+            </button>
+          </div>
+        </div>
+
+        <!-- Packing & Prep Checklist -->
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <h3><i data-lucide="check-square"></i> 여행 준비물 & 체크리스트</h3>
+            <button type="button" id="reset-check-btn" class="btn-text">초기화</button>
+          </div>
+          <p class="tool-desc">자차 이동 및 설악산 흔들바위 트레킹 필수 준비물입니다.</p>
+
+          <form id="checklist-form" class="expense-form">
+            <input type="text" id="checklist-input" placeholder="추가할 준비물 입력..." required />
+            <button type="submit" class="btn-add"><i data-lucide="plus"></i> 추가</button>
+          </form>
+
+          <ul id="checklist-items" class="checklist-items"></ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating Quick Share / Copy Action -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>속초 1박 2일 우정여행 (2026.11.21 ~ 11.22) · 안전 운전 & 즐거운 여행 되세요!</p>
+      <button type="button" id="copy-full-schedule-btn" class="btn-footer-copy">
+        <i data-lucide="share-2"></i> 카카오톡 공유용 전체 일정 텍스트 복사
+      </button>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">복사되었습니다!</div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
